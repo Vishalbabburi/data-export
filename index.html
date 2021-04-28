@@ -1,0 +1,219 @@
+<style>
+    td{
+    border: 1px solid black;
+}
+table{
+    border: 1px solid black;
+}
+</style>
+<!-- <style>
+    body  {
+      background-image: url("C:\Users\madhu\Downloads\US census bureau.png");
+      background-color: #cccccc;
+    }
+</style>
+<style>
+button {
+    background-color: #00ffff;
+}
+</style> -->
+<body onload="mycustomFun()">
+<select id="selectState" onchange="getCounties()">
+    <option value="ignore">Choose State</option>
+</select>
+<select id="selectCounty" >
+    <option  value="ignore">Choose County</option>
+</select>
+<select id="selectAge" >
+    <option value="ignore">Choose Age group</option>
+</select>
+<select id="selectGender" >
+    <option value = "ignore">Choose Gender</option>
+    <option value = "1">Male</option>
+    <option value = "2">Female</option>
+    <option value = "0">Other</option>
+</select>
+
+<button onclick="getData()">Submit</button>
+<button onclick="downloadData()">Download data</button>
+<table id="table">
+    <tbody></tbody>
+</table>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    const HttpClient = function () {
+        this.get = function (aUrl, aCallback) {
+            const anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function () {
+                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+            }
+
+            anHttpRequest.open("GET", aUrl, true);
+            anHttpRequest.send(null);
+        }
+    };
+
+    function mycustomFun(){
+        const client = new HttpClient();
+        client.get('http://localhost:3010/get-states', function(response) {
+            // do something with response
+            response = JSON.parse(response);
+            console.log(response)
+            const select = document.getElementById("selectState");
+            for(let i = 0; i < response.length; i++) {
+                const opt = response[i].state;
+
+                const el = document.createElement("option");
+                el.text = opt;
+                el.value = opt;
+
+                select.add(el);
+            }
+            getAge();
+        });
+    }
+    function getCounties(){
+        let state = document.getElementById("selectState").value;
+    //alert(state);
+    const client = new HttpClient();
+        client.get('http://localhost:3010/get-counties/'+state, function(response) {
+            // do something with response
+            response = JSON.parse(response);
+            console.log(response)
+            const select = document.getElementById("selectCounty");
+            document.getElementById('selectCounty').options.length = 0;
+            let el = document.createElement("option");
+                el.text = 'Choose county';
+                el.value = 'ignore';
+                select.add(el);
+            for(let i = 0; i < response.length; i++) {
+                const opt = response[i].county;
+
+                const el = document.createElement("option");
+                el.text = opt;
+                el.value = opt;
+
+                select.add(el);
+            }});
+    }
+    function getAge(){
+        const client = new HttpClient();
+        client.get('http://localhost:3010/get-age', function(response) {
+            // do something with response
+            response = JSON.parse(response);
+            console.log(response)
+            const select = document.getElementById("selectAge");
+            for(let i = 0; i < response.length; i++) {
+                
+
+                const el = document.createElement("option");
+                el.text = response[i].Age_group;
+                el.value = response[i].Age_code;
+
+                select.add(el);
+            }});
+    }
+    async function getData(){
+        let state = document.getElementById("selectState").value;
+        if(state == "ignore")
+        alert("Please select state");
+        else{
+            state= state.replace(" ", "_");
+            let query = "select distinct state, county, population, age_group, gender_name from "+state+ " left join age_group on "+state+".Age=age_group.Age_code left join gender on gender.gender_id="+state+".Sex"
+            let andQuery = [];
+            let idsArray = ["selectCounty", "selectAge", "selectGender"];
+            for(let i = 0; i <idsArray.length;i++)
+            {
+                let data = document.getElementById(idsArray[i]).value;
+                if(data != "ignore")
+                {
+                    if(idsArray[i] == "selectCounty")
+                        andQuery.push(" county = '" + data + "'" )
+                    else if(idsArray[i] == "selectAge")
+                        andQuery.push(" age = " + data )
+                    else if(idsArray[i] == "selectGender")
+                        andQuery.push(" sex = " + data )
+                }
+            }
+            if(andQuery.length > 0)
+            {
+                query = query+" where "+andQuery.join(" and ")+" LIMIT 15"
+            }
+            else{
+                query = query+" LIMIT 15"
+            }
+            alert(query);
+    //         let formData = new FormData();
+    //         formData.append("query", query);
+      
+    //         let response = await fetch('http://localhost:3010/getData', {
+    //             method: 'POST',
+    //         body: formData
+    // });
+
+    // let result = await response.json();
+    // console.log(result)
+    $.post("http://localhost:3010/getData",
+    {
+      query: query
+    },
+    function(data,status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    console.log(data)
+    var t = "";
+$('#table tbody').text("");
+$('#table tbody').append("<tr><td>population</td><td>state</td><td>county</td><td>age_group</td><td>gender</td></tr>");
+
+$.each(data, function(i, v) {
+    // console.log(v)
+   t += '<tr><td>'+v.population+'</td><td>'+v.state+'</td><td>'+v.county+'</td><td>'+v.age_group+'</td><td>'+v.gender_name+'</td></tr>';
+});
+console.log(t);
+$('#table tbody').append(t);
+    });
+        }
+    }
+
+    async function downloadData(){
+        let state = document.getElementById("selectState").value;
+        if(state == "ignore")
+        alert("Please select state");
+        else{
+            state= state.replace(" ", "_");
+            let query = "select distinct state, county, population, age_group, gender_name from "+state+ " left join age_group on "+state+".Age=age_group.Age_code left join gender on gender.gender_id="+state+".Sex"
+            let andQuery = [];
+            let idsArray = ["selectCounty", "selectAge", "selectGender"];
+            for(let i = 0; i <idsArray.length;i++)
+            {
+                let data = document.getElementById(idsArray[i]).value;
+                if(data != "ignore")
+                {
+                    if(idsArray[i] == "selectCounty")
+                        andQuery.push(" county = '" + data + "'" )
+                    else if(idsArray[i] == "selectAge")
+                        andQuery.push(" age = " + data )
+                    else if(idsArray[i] == "selectGender")
+                        andQuery.push(" sex = " + data )
+                }
+            }
+            if(andQuery.length > 0)
+            {
+                query = query+" where "+andQuery.join(" and ")
+            }
+
+    $.post("http://localhost:3010/download-data",
+    {
+      query: query
+    },
+    function(data,status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    console.log(data)
+    window.open(data.download_path);
+        });
+        }
+    }
+</script>
+
+

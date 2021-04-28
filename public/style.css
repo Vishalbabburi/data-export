@@ -1,0 +1,249 @@
+@font-face{
+  font-family: 'regular';
+  src: url('./MADE-Evolve-Sans-Regular.woff') format(woff)
+}
+.homepage{
+  margin-top: 4px;
+}
+.menudiv{
+  text-align: left;
+  color: #f1f1f1;
+  background-color: #111;
+
+}
+span.menubutton{
+  font-size: 25px;
+  width: 100%;
+  text-align: left;
+  font-weight: bolder;
+  margin-top: 0px;
+  margin-left:15px;
+  border:2px #3983fa;
+  border-radius: 12px;
+  cursor: pointer;
+}
+span.titlebar{
+  font-size: 35px;
+  margin-left:550px;
+  margin-right:550px;
+  font-weight:bold;
+  
+}
+.sidenav {
+  display:none;
+  margin-top: 5px;;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  /*color: #818181;*/
+  color:rgb(201,134,212);
+  display: block;
+  transition: 0.3s;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.closediv{
+  transition: 0.5s;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  color:rgb(201,134,212);
+  font-size: 36px;
+  margin-left: 50px;
+  cursor: pointer;
+}  
+.maindiv{
+  transition:0.5s;
+}
+.mainDivMargin{
+  margin-left:250px;
+}
+.linkbtn{
+  float: left;
+  margin:5px;
+  position:relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 15px;
+  background: #f1f8fe;
+  color: #3983fa;
+font-size:medium;
+font-weight: bold;
+cursor: pointer;
+outline:none;
+}
+.linkbtn:hover{
+  background:#3983fa;
+  color:white;
+  
+}
+.modal{
+  display: block;
+  padding: 20px 50px 20px 50px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  width:max-content;
+  border:2px gray;
+  border-radius: 12px;
+  z-index:500;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px #684f77;
+  box-sizing: border-box;
+}
+.formtitle{
+  margin-top: 0px;
+  width:fit-content;
+  border:2px rgb(134, 31, 134);
+}
+.select{
+  display:block;
+  text-align: center;
+  width: 200px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 8px 12px;
+  color:white;
+  background-color: #684f77;
+  border:1px solid black;
+  border-radius: 12px;
+  font-size: large;
+  outline: none;
+}
+.stateMenu{
+  margin-top: 50px;
+}
+.select:hover{
+  outline: none;
+  background-color: rgb(42, 43, 41);
+  color:white;
+}
+.select option{
+  background-color: white;
+  color: black;
+}
+hr{
+  border:1px solid gray;
+}
+.formbutton{
+  padding: 15px 32px;
+ /* background-color:rgb(64, 89, 230);*/
+ background-color: #684f77;
+text-align: center;
+color: white;
+text-decoration: none;
+display: inline-block;
+
+font-size: large;
+font-weight: bold;
+margin: 10px 2px;
+cursor: pointer;
+border: 2px solid  #684f77;
+border-radius:12px;
+outline:none;
+}
+.formbutton:hover{
+  background-color:rgb(19, 96, 197);
+  color:white;
+  font-weight: bold;
+}
+.downloadbtn{
+  display: none;
+  background-color: red;
+  border:none;
+  animation: downloadanim 0.5s ease-out forwards;
+
+}
+@keyframes downloadanim {
+  0%{transform: translateY(-100%);}
+  50%{transform: translateY(70%);}
+  100%{transform: translateY(0%);}
+}
+.downloadbtn:hover{
+  background-color:rgba(255, 0, 0, 0.623) ;
+}
+@media screen and (max-height: 450px) {
+  
+}
+
+/*prev style starts here*/
+.contentdiv{
+    text-align: center;
+    z-index: 99999;
+}
+
+
+
+table{
+    margin-top:15px;
+    margin-left: auto;
+    margin-right:auto;
+    font-weight: bold;
+}
+
+html,
+body {
+  background-color: #111;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* by vishal will delete later from here*/
+.dropdowndiv{
+    
+  /* display: block;
+  padding:5px 10px;
+  height: 20px;
+  width: fit-content;
+  border: 2px solid black;
+  background-color: aliceblue;
+  cursor:default */
+position: relative;
+  display:block;
+text-align: center;
+width:max-content;
+padding: 8px 12px;
+color:white;
+background-color: #684f77;
+border:1px solid black;
+border-radius: 12px;
+font-size: large;
+outline: none;
+}
+li{
+  display: block;
+}
+.selectin{
+  display: none;
+  position: relative;
+  margin-top: 0px;
+  /* width:100%; */
+  padding:5px;
+  background-color: azure;
+  border: 1px solid gray;
+}
+.option:hover{
+  background-color: skyblue;
+  color: azure;
+  cursor:default
+}
+
+

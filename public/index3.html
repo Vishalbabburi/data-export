@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<head>
+    <title>Team stack</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css" integrity="sha512-6g9IGCc67eh+xK03Z8ILcnKLbJnKBW+qpEdoUVD/4hBa2Ghiq5dQgeNOGWJfGoe9tdCRM4GpJMnsRXa2FDJp9Q==" crossorigin="anonymous" />
+     <link rel="stylesheet" href="style.css"> 
+     
+     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<style>
+    td{
+    border: 1px solid black;
+}
+table{
+    border: 2px solid black;
+}
+</style>
+<body onload="mycustomFun()">
+    <div class="menudiv"><span class="menubutton" onclick="showsidenavhandler()"> &#9776; Menu</span>
+    <span class="titlebar"> Data Filter Tool</span></div>
+    <div class='sidenav'>
+        <div class='closediv' onclick="closenavhandler()">&times;</div>
+        <a href=''>HOME</a>
+        <a href='https://siu.edu/'>About SIUC</a>
+    </div>
+
+<div class='modal'>
+<select class="select" id="selectState" onchange="getCounties()">
+    <option value="ignore">Choose State</option>
+</select> <br>
+    <select class="select selectpicker" id="selectCounty" multiple>
+        <option  value="ignore">Choose County</option>
+    </select><br>
+<select class="select" id="selectAge" >
+    <option value="ignore">Choose Age group</option>
+</select><br>
+<select class="select selectpicker" id="selectGender" multiple>
+    <option value = "ignore">Choose Gender</option>
+    <option value = "1">Male</option>
+    <option value = "2">Female</option>
+    <option value = "0">Other</option>
+</select><br> <br>
+
+<!-- by vishal  -->
+<div class="rootdiv"  onmouseover="showoptions(event)" onmouseout="hideoptions(event)" > 
+    <!-- delicate code...........>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. -->
+    <div class=" dropdowndiv dropdowndivName" id="Name">Choose Name</div>
+        <ul class="selectin selectName" id="ulforNames" onmouseover="showoptions(event)">
+            
+        </ul>
+    </div>
+<!-- end vishal -->
+
+<button id='submitbtn' class='formbutton' onclick="getData()">Submit</button><br>
+<button id='downloadbtn' class ='formbutton downloadbtn' onclick="downloadData()"><i class='fas fa-arrow-alt-circle-down'></i> Download data</button><br>
+
+
+<table id="table">
+    <tbody></tbody>
+</table>
+</div>     
+ 
+<!-- <!.................. END OF CONTENTDIV> -->
+
+
+<!-- <! ###################################### JAVASCRIPT STARTS FROM HERE #########################################> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js" integrity="sha512-iqhWkvLOXVDz+Lr//ZryEKNvZ5pmgdKEe58Wh/VwfTGwTku0MKbuLhjJ1zUAJu8iSbOqfLcXrrxJ61+27THi2Q==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous"></script>
+<script>$(document).ready(function(){
+    $('.selectpicker').selectpicker();
+})</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script type="text/javascript">
+    const HttpClient = function () {
+        this.get = function (aUrl, aCallback) {
+            const anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function () {
+                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+            }
+
+            anHttpRequest.open("GET", aUrl, true);
+            anHttpRequest.send(null);
+        }
+    };
+    // below function executes everytime a page loads.
+    function mycustomFun(){
+        const client = new HttpClient();
+        client.get('http://localhost:3010/get-states', function(response) {
+            // do something with response
+            console.log(response);
+           var response = JSON.parse(response);
+            console.log(response);
+            console.log(response[0].state);
+            //by vishal
+            for(let i=0;i<response.length;i++){
+                 states.push(response[i].state);}
+                    console.log(states);
+                     for(let i=0;i<response.length;i++){
+                        sendobj.states.push({statename:'',counties:[]});//creating an object and pushing it to states array inside sendobj.
+                        sendobj.states[i].statename=response[i];// each statename is given a value.
+                    }
+                  
+                 //end vishal
+                 console.log(sendobj)
+            const select = document.getElementById("selectState");
+            for(let i = 0; i < response.length; i++) {
+                const opt = response[i].state;
+
+                const el = document.createElement("option");
+                el.text = opt;
+                el.value = opt;
+
+                select.add(el);
+            }
+            getAge();
+            testing(); //testing by vishal called here
+        });
+    }
+    function getCounties(){
+        let state = document.getElementById("selectState").value;
+    //alert(state);
+    const client = new HttpClient();
+        client.get('http://localhost:3010/get-counties/'+state, function(response) {
+            // do something with response
+            response = JSON.parse(response);
+            console.log(response)
+            const select = document.getElementById("selectCounty");
+            document.getElementById('selectCounty').options.length = 0;
+            let el = document.createElement("option");
+                el.text = 'Choose county';
+                el.value = 'ignore';
+                select.add(el);
+            for(let i = 0; i < response.length; i++) {
+                const opt = response[i].county;
+
+                const el = document.createElement("option");
+                el.text = opt;
+                el.value = opt;
+
+                select.add(el);
+            }});
+    }
+    function getAge(){
+        const client = new HttpClient();
+        client.get('http://localhost:3010/get-age', function(response) {
+            // do something with response
+            response = JSON.parse(response);
+            console.log(response)
+            const select = document.getElementById("selectAge");
+            for(let i = 0; i < response.length; i++) {
+                
+
+                const el = document.createElement("option");
+                el.text = response[i].Age_group;
+                el.value = response[i].Age_code;
+
+                select.add(el);
+            }});
+    }
+
+    async function getData(){
+        document.getElementById('downloadbtn').style.display='block';
+        let state = document.getElementById("selectState").value;
+        if(state == "ignore")
+        alert("Please select state");
+        else{
+            state= state.replace(" ", "_");
+            let query = "select distinct state, county, population, age_group, gender_name from "+state+ " left join age_group on "+state+".Age=age_group.Age_code left join gender on gender.gender_id="+state+".Sex"
+            let andQuery = [];
+            let idsArray = ["selectCounty", "selectAge", "selectGender"];
+            for(let i = 0; i <idsArray.length;i++)
+            {
+                let data = document.getElementById(idsArray[i]).value;
+                if(data != "ignore")
+                {
+                    if(idsArray[i] == "selectCounty")
+                        andQuery.push(" county = '" + data + "'" )
+                    else if(idsArray[i] == "selectAge")
+                        andQuery.push(" age = " + data )
+                    else if(idsArray[i] == "selectGender")
+                        andQuery.push(" sex = " + data )
+                }
+            }
+            if(andQuery.length > 0)
+            {
+                query = query+" where "+andQuery.join(" and ")+" LIMIT 15"
+            }
+            else{
+                query = query+" LIMIT 15"
+            }
+            alert(query);
+    //         let formData = new FormData();
+    //         formData.append("query", query);
+      
+    //         let response = await fetch('http://localhost:3010/getData', {
+    //             method: 'POST',
+    //         body: formData
+    // });
+
+    // let result = await response.json();
+    // console.log(result)
+    $.post("http://localhost:3010/getData",
+    {
+      query: query
+    },
+    function(data,status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    console.log(data)
+    var t = "";
+$('#table tbody').text("");
+$('#table tbody').append("<tr><td>population</td><td>state</td><td>county</td><td>age_group</td><td>gender</td></tr>");
+
+$.each(data, function(i, v) {
+    // console.log(v)
+   t += '<tr><td>'+v.population+'</td><td>'+v.state+'</td><td>'+v.county+'</td><td>'+v.age_group+'</td><td>'+v.gender_name+'</td></tr>';
+});
+console.log(t);
+$('#table tbody').append(t);
+    });
+        }
+    }
+
+    async function downloadData(){
+        let state = document.getElementById("selectState").value;
+        if(state == "ignore")
+        alert("Please select state");
+        else{
+            state= state.replace(" ", "_");
+            let query = "select distinct state, county, population, age_group, gender_name from "+state+ " left join age_group on "+state+".Age=age_group.Age_code left join gender on gender.gender_id="+state+".Sex"
+            let andQuery = [];
+            let idsArray = ["selectCounty", "selectAge", "selectGender"];
+            for(let i = 0; i <idsArray.length;i++)
+            {
+                let data = document.getElementById(idsArray[i]).value;
+                if(data != "ignore")
+                {
+                    if(idsArray[i] == "selectCounty")
+                        andQuery.push(" county = '" + data + "'" )
+                    else if(idsArray[i] == "selectAge")
+                        andQuery.push(" age = " + data )
+                    else if(idsArray[i] == "selectGender")
+                        andQuery.push(" sex = " + data )
+                }
+            }
+            if(andQuery.length > 0)
+            {
+                query = query+" where "+andQuery.join(" and ")
+            }
+
+    $.post("http://localhost:3010/download-data",
+    {
+      query: query
+    },
+    function(data,status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    console.log(data)
+    window.open(data.download_path);
+        });
+        }
+    }
+var states=[];
+var sendobj={
+    states:[
+   /*  {statename:'Alabama', counties:['1','2','3']},
+    {statename:'Alabama', counties:['1','2','3']} */
+ ]
+};
+function closenavhandler(){
+    document.querySelector('.sidenav').style.display='none';
+}
+function showsidenavhandler(){
+    document.querySelector('.sidenav').style.display='block';
+}
+//Main object to be posted to firebase
+//multi select dropdown scripts by vishal
+function showoptions(event){
+        console.log("it is "+event.target.id)
+        document.querySelector('.selectName').style.display='block';
+    }
+    function hideoptions(event){
+        //document.querySelector('.select'+event.target.id).style.display='none';
+        document.querySelector('.selectName').style.display='none';
+    }
+    function selectoption(event){
+       let appendstr=''
+        // delicate code..........>>>>>>>>>>>>>>
+        let appendarr=event.target.id.split("")
+            appendarr.pop();
+            appendstr=appendarr.join("");
+            console.log(appendstr)
+        if(idstore.includes(event.target.id)){
+            console.log(event.target.id);
+           
+            // if already existing then remove the event.target.textContent pattern from string
+           let  mystring=document.querySelector('.dropdowndiv'+appendstr).textContent;
+            let myarr=mystring.split(',');
+            myindex=myarr.indexOf(event.target.textContent)
+            myarr.splice(myindex,1);
+            let modifiedString=myarr.toString();
+            if(modifiedString==="")
+                document.querySelector('.dropdowndiv'+appendstr).textContent="Choose "+appendstr;
+                //document.querySelector('#'+event.target.id).textContent="Choose Names"
+            else
+                document.querySelector('.dropdowndiv'+appendstr).textContent=modifiedString;
+            //Now find the index of event.target.id and remove its entry from idstore array
+            idstore.splice(idstore.indexOf(event.target.id),1);
+            // console.log(myarr +" and target index is "+myindex)
+            console.log("modified string is"+modifiedString)
+            console.log("idstore array is" +idstore)
+            return null
+        }
+        
+        else{
+            //when event.target.textContent is not present in string,add it id to idstore array, and  append textcontect to String
+            idstore.push(event.target.id)
+        let selectedvalues=document.querySelector('.dropdowndiv'+appendstr);
+        
+        if(selectedvalues.childNodes[0].nodeValue==="Choose Name")
+        {                                                                                                                              
+            selectedvalues.textContent=event.target.textContent;
+            event.target.style.color='red';
+        }
+        else{
+           
+        var node=document.createTextNode(","+event.target.textContent);
+        document.querySelector('.dropdowndiv'+appendstr).appendChild(node);
+            event.target.style.color='red';   
+        }
+       console.log("final textcontent is"+document.querySelector('.dropdowndiv'+appendstr).textContent)
+    }//close outer else
+}
+    //function testing by vishal
+    var idstore=[];
+    async function testing(){
+        const client = new HttpClient();
+        client.get("http://localhost:3010/testing", function(response) {
+            // do something with response
+            console.log(response)
+            response = JSON.parse(response);
+            console.log("Iam from testing function......")
+            console.log(response);
+            const select = document.getElementById("ulforNames");
+            for(let i = 0; i < response.length; i++) {
+                
+
+                const el = document.createElement("LI");
+                //<li class="option" onclick="selectoption(event)">Vishal</li> should look like this
+                el.textContent = response[i];
+                // delicate code>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                el.id = "Name"+i;   //eg:Name0 if you want to write for county then el.id="county"+i
+                el.className="option";
+                 el.addEventListener("click",selectoption)
+                select.appendChild(el);}
+
+            });
+    }//end of testing function
+</script>
+
+</body>

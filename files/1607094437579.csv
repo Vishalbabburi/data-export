@@ -1,0 +1,97 @@
+state,county,population,age_group,gender_name
+Colorado,Broomfield,69267,All Ages,Other
+Colorado,Broomfield,34441,All Ages,Male
+Colorado,Broomfield,34826,All Ages,Female
+Colorado,Broomfield,3722,Age 0 to 4 years,Other
+Colorado,Broomfield,1866,Age 0 to 4 years,Male
+Colorado,Broomfield,1856,Age 0 to 4 years,Female
+Colorado,Broomfield,4340,Age 5 to 9 years,Other
+Colorado,Broomfield,2235,Age 5 to 9 years,Male
+Colorado,Broomfield,2105,Age 5 to 9 years,Female
+Colorado,Broomfield,4990,Age 10 to 14 years,Other
+Colorado,Broomfield,2542,Age 10 to 14 years,Male
+Colorado,Broomfield,2448,Age 10 to 14 years,Female
+Colorado,Broomfield,4407,Age 15 to 19 years,Other
+Colorado,Broomfield,2248,Age 15 to 19 years,Male
+Colorado,Broomfield,2159,Age 15 to 19 years,Female
+Colorado,Broomfield,3765,Age 20 to 24 years,Other
+Colorado,Broomfield,1911,Age 20 to 24 years,Male
+Colorado,Broomfield,1854,Age 20 to 24 years,Female
+Colorado,Broomfield,5454,Age 25 to 29 years,Other
+Colorado,Broomfield,2889,Age 25 to 29 years,Male
+Colorado,Broomfield,2565,Age 25 to 29 years,Female
+Colorado,Broomfield,5077,Age 30 to 34 years,Other
+Colorado,Broomfield,2699,Age 30 to 34 years,Male
+Colorado,Broomfield,2378,Age 30 to 34 years,Female
+Colorado,Broomfield,5049,Age 35 to 39 years,Other
+Colorado,Broomfield,2547,Age 35 to 39 years,Male
+Colorado,Broomfield,2502,Age 35 to 39 years,Female
+Colorado,Broomfield,5242,Age 40 to 44 years,Other
+Colorado,Broomfield,2635,Age 40 to 44 years,Male
+Colorado,Broomfield,2607,Age 40 to 44 years,Female
+Colorado,Broomfield,5162,Age 45 to 49 years,Other
+Colorado,Broomfield,2614,Age 45 to 49 years,Male
+Colorado,Broomfield,2548,Age 45 to 49 years,Female
+Colorado,Broomfield,4394,Age 50 to 54 years,Other
+Colorado,Broomfield,2189,Age 50 to 54 years,Male
+Colorado,Broomfield,2205,Age 50 to 54 years,Female
+Colorado,Broomfield,4234,Age 55 to 59 years,Other
+Colorado,Broomfield,2117,Age 55 to 59 years,Male
+Colorado,Broomfield,2117,Age 55 to 59 years,Female
+Colorado,Broomfield,3839,Age 60 to 64 years,Other
+Colorado,Broomfield,1847,Age 60 to 64 years,Male
+Colorado,Broomfield,1992,Age 60 to 64 years,Female
+Colorado,Broomfield,3208,Age 65 to 69 years,Other
+Colorado,Broomfield,1432,Age 65 to 69 years,Male
+Colorado,Broomfield,1776,Age 65 to 69 years,Female
+Colorado,Broomfield,2612,Age 70 to 74 years,Other
+Colorado,Broomfield,1180,Age 70 to 74 years,Male
+Colorado,Broomfield,1432,Age 70 to 74 years,Female
+Colorado,Broomfield,1573,Age 75 to 79 years,Other
+Colorado,Broomfield,697,Age 75 to 79 years,Male
+Colorado,Broomfield,876,Age 75 to 79 years,Female
+Colorado,Broomfield,1099,Age 80 to 84 years,Other
+Colorado,Broomfield,433,Age 80 to 84 years,Male
+Colorado,Broomfield,666,Age 80 to 84 years,Female
+Colorado,Broomfield,1100,Age 85 years and older,Other
+Colorado,Broomfield,360,Age 85 years and older,Male
+Colorado,Broomfield,740,Age 85 years and older,Female
+Colorado,Broomfield,16005,Under 18 years,Other
+Colorado,Broomfield,8166,Under 18 years,Male
+Colorado,Broomfield,7839,Under 18 years,Female
+Colorado,Broomfield,8302,5 to 13 years,Other
+Colorado,Broomfield,4234,5 to 13 years,Male
+Colorado,Broomfield,4068,5 to 13 years,Female
+Colorado,Broomfield,3981,14 to 17 years,Other
+Colorado,Broomfield,2066,14 to 17 years,Male
+Colorado,Broomfield,1915,14 to 17 years,Female
+Colorado,Broomfield,43670,18 to 64 years,Other
+Colorado,Broomfield,22173,18 to 64 years,Male
+Colorado,Broomfield,21497,18 to 64 years,Female
+Colorado,Broomfield,5219,18 to 24 years,Other
+Colorado,Broomfield,2636,18 to 24 years,Male
+Colorado,Broomfield,2583,18 to 24 years,Female
+Colorado,Broomfield,20822,25 to 44 years,Other
+Colorado,Broomfield,10770,25 to 44 years,Male
+Colorado,Broomfield,10052,25 to 44 years,Female
+Colorado,Broomfield,17629,45 to 64 years,Other
+Colorado,Broomfield,8767,45 to 64 years,Male
+Colorado,Broomfield,8862,45 to 64 years,Female
+Colorado,Broomfield,9592,65 years and over,Other
+Colorado,Broomfield,4102,65 years and over,Male
+Colorado,Broomfield,5490,65 years and over,Female
+Colorado,Broomfield,1100,85 years and over,Other
+Colorado,Broomfield,360,85 years and over,Male
+Colorado,Broomfield,740,85 years and over,Female
+Colorado,Broomfield,55204,16 years and over,Other
+Colorado,Broomfield,27277,16 years and over,Male
+Colorado,Broomfield,27927,16 years and over,Female
+Colorado,Broomfield,53262,18 years and over,Other
+Colorado,Broomfield,26275,18 years and over,Male
+Colorado,Broomfield,26987,18 years and over,Female
+Colorado,Broomfield,28994,15 to 44 years,Other
+Colorado,Broomfield,14929,15 to 44 years,Male
+Colorado,Broomfield,14065,15 to 44 years,Female
+Colorado,Broomfield,38,Median age,Other
+Colorado,Broomfield,37,Median age,Male
+Colorado,Broomfield,39,Median age,Female

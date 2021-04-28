@@ -1,0 +1,97 @@
+state,county,population,age_group,gender_name
+California,Del Norte,27828,All Ages,Other
+California,Del Norte,15188,All Ages,Male
+California,Del Norte,12640,All Ages,Female
+California,Del Norte,1560,Age 0 to 4 years,Other
+California,Del Norte,812,Age 0 to 4 years,Male
+California,Del Norte,748,Age 0 to 4 years,Female
+California,Del Norte,1659,Age 5 to 9 years,Other
+California,Del Norte,853,Age 5 to 9 years,Male
+California,Del Norte,806,Age 5 to 9 years,Female
+California,Del Norte,1688,Age 10 to 14 years,Other
+California,Del Norte,856,Age 10 to 14 years,Male
+California,Del Norte,832,Age 10 to 14 years,Female
+California,Del Norte,1479,Age 15 to 19 years,Other
+California,Del Norte,773,Age 15 to 19 years,Male
+California,Del Norte,706,Age 15 to 19 years,Female
+California,Del Norte,1584,Age 20 to 24 years,Other
+California,Del Norte,965,Age 20 to 24 years,Male
+California,Del Norte,619,Age 20 to 24 years,Female
+California,Del Norte,1925,Age 25 to 29 years,Other
+California,Del Norte,1202,Age 25 to 29 years,Male
+California,Del Norte,723,Age 25 to 29 years,Female
+California,Del Norte,2008,Age 30 to 34 years,Other
+California,Del Norte,1301,Age 30 to 34 years,Male
+California,Del Norte,707,Age 30 to 34 years,Female
+California,Del Norte,2056,Age 35 to 39 years,Other
+California,Del Norte,1269,Age 35 to 39 years,Male
+California,Del Norte,787,Age 35 to 39 years,Female
+California,Del Norte,1634,Age 40 to 44 years,Other
+California,Del Norte,998,Age 40 to 44 years,Male
+California,Del Norte,636,Age 40 to 44 years,Female
+California,Del Norte,1603,Age 45 to 49 years,Other
+California,Del Norte,935,Age 45 to 49 years,Male
+California,Del Norte,668,Age 45 to 49 years,Female
+California,Del Norte,1641,Age 50 to 54 years,Other
+California,Del Norte,895,Age 50 to 54 years,Male
+California,Del Norte,746,Age 50 to 54 years,Female
+California,Del Norte,1940,Age 55 to 59 years,Other
+California,Del Norte,993,Age 55 to 59 years,Male
+California,Del Norte,947,Age 55 to 59 years,Female
+California,Del Norte,2033,Age 60 to 64 years,Other
+California,Del Norte,939,Age 60 to 64 years,Male
+California,Del Norte,1094,Age 60 to 64 years,Female
+California,Del Norte,1754,Age 65 to 69 years,Other
+California,Del Norte,871,Age 65 to 69 years,Male
+California,Del Norte,883,Age 65 to 69 years,Female
+California,Del Norte,1276,Age 70 to 74 years,Other
+California,Del Norte,657,Age 70 to 74 years,Male
+California,Del Norte,619,Age 70 to 74 years,Female
+California,Del Norte,893,Age 75 to 79 years,Other
+California,Del Norte,412,Age 75 to 79 years,Male
+California,Del Norte,481,Age 75 to 79 years,Female
+California,Del Norte,546,Age 80 to 84 years,Other
+California,Del Norte,244,Age 80 to 84 years,Male
+California,Del Norte,302,Age 80 to 84 years,Female
+California,Del Norte,549,Age 85 years and older,Other
+California,Del Norte,213,Age 85 years and older,Male
+California,Del Norte,336,Age 85 years and older,Female
+California,Del Norte,5854,Under 18 years,Other
+California,Del Norte,3004,Under 18 years,Male
+California,Del Norte,2850,Under 18 years,Female
+California,Del Norte,3036,5 to 13 years,Other
+California,Del Norte,1551,5 to 13 years,Male
+California,Del Norte,1485,5 to 13 years,Female
+California,Del Norte,1258,14 to 17 years,Other
+California,Del Norte,641,14 to 17 years,Male
+California,Del Norte,617,14 to 17 years,Female
+California,Del Norte,16956,18 to 64 years,Other
+California,Del Norte,9787,18 to 64 years,Male
+California,Del Norte,7169,18 to 64 years,Female
+California,Del Norte,2116,18 to 24 years,Other
+California,Del Norte,1255,18 to 24 years,Male
+California,Del Norte,2853,25 to 44 years,Female
+California,Del Norte,861,18 to 24 years,Female
+California,Del Norte,7623,25 to 44 years,Other
+California,Del Norte,4770,25 to 44 years,Male
+California,Del Norte,7217,45 to 64 years,Other
+California,Del Norte,3762,45 to 64 years,Male
+California,Del Norte,3455,45 to 64 years,Female
+California,Del Norte,5018,65 years and over,Other
+California,Del Norte,2397,65 years and over,Male
+California,Del Norte,2621,65 years and over,Female
+California,Del Norte,549,85 years and over,Other
+California,Del Norte,213,85 years and over,Male
+California,Del Norte,336,85 years and over,Female
+California,Del Norte,22614,16 years and over,Other
+California,Del Norte,12515,16 years and over,Male
+California,Del Norte,10099,16 years and over,Female
+California,Del Norte,21974,18 years and over,Other
+California,Del Norte,12184,18 years and over,Male
+California,Del Norte,9790,18 years and over,Female
+California,Del Norte,10686,15 to 44 years,Other
+California,Del Norte,6508,15 to 44 years,Male
+California,Del Norte,4178,15 to 44 years,Female
+California,Del Norte,40,Median age,Other
+California,Del Norte,38,Median age,Male
+California,Del Norte,43,Median age,Female
